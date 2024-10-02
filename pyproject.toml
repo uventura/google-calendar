@@ -18,7 +18,9 @@ description = "Google Calendar for terminal usage."
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "black==24.8.0"
+]
 
 [project.scripts]
 google-calendar = "google_calendar.google_calendar:main"
