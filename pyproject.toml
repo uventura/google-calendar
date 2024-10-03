@@ -33,5 +33,5 @@ dependencies = [
 ]
 
 [project.scripts]
-google-calendar = "google_calendar.google_calendar:main"
+google-calendar = "google_calendar.google_calendar:default"
 
