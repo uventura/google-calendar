@@ -1,4 +1,4 @@
-from google_calendar.session.environment import CALENDAR_SCOPES
+from google_calendar.environment.constants import CALENDAR_SCOPES
 import google_calendar.session.cache as cache
 
 from google.auth.transport.requests import Request
