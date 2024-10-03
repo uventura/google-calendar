@@ -1,4 +1,4 @@
-class List():
+class List:
     def __init__(self, type: str):
         self._type = type
 

@@ -34,13 +34,9 @@ class Credential:
         return credential
 
     def _create_credential(self):
-        credential_path = Path(
-            input("Provide the 'credential.json' file path: ")
-        )
+        credential_path = Path(input("Provide the 'credential.json' file path: "))
         if not credential_path.exists():
-            self._logger.error(
-                f"The path '{credential_path.resolve()}' doesn't exist."
-            )
+            self._logger.error(f"The path '{credential_path.resolve()}' doesn't exist.")
             exit(-1)
 
         flow = InstalledAppFlow.from_client_secrets_file(
@@ -49,5 +45,4 @@ class Credential:
         return flow.run_local_server(port=0)
 
     def _save_token(self, credential):
-        with open(self._token_path, "w") as token:
-            token.write(credential)
+        cache.save_cache_file("token.json", credential)

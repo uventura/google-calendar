@@ -10,11 +10,15 @@ GoogleCalendarCli = typer.Typer()
 def default():
     Default().run()
 
+
 @GoogleCalendarCli.command()
 def list(
-    type: str = typer.Option("all", help="What calendar information type should be listed")
+    type: str = typer.Option(
+        "all", help="What calendar information type should be listed"
+    )
 ):
     List(type).run()
+
 
 def main():
     GoogleCalendarCli()
