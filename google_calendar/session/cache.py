@@ -1,6 +1,5 @@
 from pathlib import Path
 import sys
-import os
 
 
 def cache_path():

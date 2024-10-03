@@ -1,4 +1,5 @@
 from google_calendar.environment.constants import CALENDAR_SCOPES
+from google_calendar.environment.logger import Logger
 import google_calendar.session.cache as cache
 
 from google.auth.transport.requests import Request
@@ -10,6 +11,7 @@ from pathlib import Path
 
 class Credential:
     def __init__(self):
+        self._logger = Logger()
         self._token_path = cache.cache_path() / "token.json"
         self._credentials = self._define_credential()
 
@@ -32,9 +34,13 @@ class Credential:
         return credential
 
     def _create_credential(self):
-        credential_path = Path(input("Provide the 'credential.json' file path: "))
+        credential_path = Path(
+            input("Provide the 'credential.json' file path: ")
+        )
         if not credential_path.exists():
-            print(f"The path '{credential_path.resolve()}' doesn't exist.")
+            self._logger.error(
+                f"The path '{credential_path.resolve()}' doesn't exist."
+            )
             exit(-1)
 
         flow = InstalledAppFlow.from_client_secrets_file(
