@@ -24,4 +24,6 @@ jobs:
           name: Release - release
           generate_release_notes: true
           prerelease: true
-          files: dist/*.tar.gz
+          files: |
+            dist/*.tar.gz
+            dist/*.whl
