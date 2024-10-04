@@ -1,17 +1,20 @@
 from google_calendar.session.credential import Credential
 from google_calendar.calendar.event import Event
+from google_calendar.commands.timezones import Timezones
 
 from rich.console import Console
 from rich.table import Table
+import pytz
 
 import datetime
 
 
 class List:
-    def __init__(self, type: str, id: str):
+    def __init__(self, type: str, id: str, timezone: str):
         self._service = Credential().service()
         self._type = type
         self._id = id
+        self._timezone = pytz.timezone(Timezones().get_timezone_name(timezone))
 
     def run(self):
         console = Console()
@@ -62,6 +65,7 @@ class List:
         for event in events_result.get("items", []):
             date = self._get_date(event)
             fdate = datetime.datetime.strptime(date, "%Y-%m-%dT%H:%M:%SZ")
+            fdate = fdate.astimezone(self._timezone)
 
             title = event.get("summary", "")
             description = event.get("description", "No description provided.")
