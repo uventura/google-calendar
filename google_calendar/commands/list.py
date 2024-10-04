@@ -1,7 +1,6 @@
 from google_calendar.session.credential import Credential
 from google_calendar.calendar.event import Event
 
-from googleapiclient.discovery import build
 from rich.console import Console
 from rich.table import Table
 
@@ -10,8 +9,7 @@ import datetime
 
 class List:
     def __init__(self, type: str):
-        credential = Credential().get()
-        self._service = build("calendar", "v3", credentials=credential)
+        self._service = Credential().service()
         self._type = type
 
     def run(self):

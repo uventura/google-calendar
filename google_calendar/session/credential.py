@@ -5,6 +5,7 @@ import google_calendar.session.cache as cache
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials as GoogleCredentials
 from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
 
 from pathlib import Path
 
@@ -17,6 +18,9 @@ class Credential:
 
     def get(self):
         return self._credentials
+
+    def service(self, type="calendar", version="v3"):
+        return build(type, version, credentials=self._credentials)
 
     def _define_credential(self):
         credential = None

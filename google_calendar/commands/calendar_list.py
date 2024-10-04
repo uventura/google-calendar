@@ -1,14 +1,12 @@
 from google_calendar.session.credential import Credential
 
-from googleapiclient.discovery import build
 from rich.console import Console
 from rich.table import Table
 
 
 class CalendarList:
     def __init__(self):
-        credential = Credential().get()
-        self._service = build("calendar", "v3", credentials=credential)
+        self._service = Credential().service()
 
     def run(self):
         console = Console()
