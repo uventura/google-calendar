@@ -60,6 +60,6 @@ class List:
             )
 
         if not events:
-            events.append(Event("None", "None"))
+            events.append(Event("None", "None", "None"))
 
         return events
