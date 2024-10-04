@@ -1,5 +1,6 @@
 from google_calendar.commands.default import Default
 from google_calendar.commands.list import List
+from google_calendar.commands.calendar_list import CalendarList
 
 import typer
 
@@ -18,6 +19,11 @@ def list(
     )
 ):
     List(type).run()
+
+
+@GoogleCalendarCli.command()
+def calendar_list():
+    CalendarList().run()
 
 
 def main():
