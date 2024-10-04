@@ -1,6 +1,8 @@
 name: Build Google Calendar Release
 run-name: ${{ github.actor }}
 on: [push]
+permissions:
+  contents: write
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
