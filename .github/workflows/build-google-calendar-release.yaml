@@ -18,8 +18,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{env.version_name}}
-          name: Release - ${{env.version_name}}
+          tag_name: release
+          name: Release - release
           generate_release_notes: true
           prerelease: true
           files: dist/*.tar.gz
